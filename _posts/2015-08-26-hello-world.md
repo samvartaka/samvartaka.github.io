@@ -6,3 +6,11 @@ category:
 tags: []
 ---
 {% include JB/setup %}
+
+Test
+
+```python
+def func(a):
+	print "A"
+	return
+```
