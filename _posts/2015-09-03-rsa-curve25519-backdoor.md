@@ -2,7 +2,7 @@
 layout: post
 title: "Detecting an asymmetric Curve25519 backdoor in RSA key generation algorithms"
 description: ""
-category:
+category: backdoors
 tags: [crypto, backdoors, curve25519, rsa]
 ---
 {% include JB/setup %}
