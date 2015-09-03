@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Samvartaka
-tagline: Supporting tagline
+tagline: "When you want to know how things really work, study them when they're coming apart."
 ---
 {% include JB/setup %}
 
@@ -12,7 +12,5 @@ tagline: Supporting tagline
     <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ BASE_PATH }}{{ post.url }}">{{ post.title }}</a></li>
   {% endfor %}
 </ul>
-
-## To-Do
 
 
