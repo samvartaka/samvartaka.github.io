@@ -103,7 +103,7 @@ We can use this fact to determine the presence of this particular backdoor as fo
 
 Hence if we collect *n = 10* RSA public keys from a suspect key generation algorithm and all of them pass the curve test the probality they were **not** generated as the result of a statistical anomaly on part of a clean algorithm is:
 
-![alt equation3]({{ site.url }}/images/equation2.png)
+![alt equation3]({{ site.url }}/images/equation3.png)
 
 Which seems sufficient to rule out statistical anomalies with some confidence.
 
