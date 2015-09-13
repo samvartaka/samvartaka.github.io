@@ -166,13 +166,13 @@ Extracting this XOR 'product' from an [unpacked](https://github.com/samvartaka/m
 		return data_blob
 ```
 
-Will yield the same binary 'blob' of XORed plaintexts:
+Will yield the [same](https://github.com/samvartaka/malware/tree/master/hackingteam_core_packer/core_blob) [binary 'blob'](https://github.com/samvartaka/malware/tree/master/hackingteam_core_packer/core_packed_blob) of XORed plaintexts:
 
 ```bash
 $ sha1sum core_blob
-145ab4b99a493ab16e3a5ff81a91b3b91c97cd9a  [core_blob](https://github.com/samvartaka/malware/tree/master/hackingteam_core_packer/core_blob)
+145ab4b99a493ab16e3a5ff81a91b3b91c97cd9a  core_blob
 $ sha1sum core_packed_blob 
-145ab4b99a493ab16e3a5ff81a91b3b91c97cd9a  [core_packed_blob](https://github.com/samvartaka/malware/tree/master/hackingteam_core_packer/core_packed_blob)
+145ab4b99a493ab16e3a5ff81a91b3b91c97cd9a  core_packed_blob
 ```
 
 An interesting property of the above scenario is that the resulting XOR-product of the plaintexts has a very particular statistical profile (as seen in the [binvis.io](http://binvis.io/) generated image of [core_blob](https://github.com/samvartaka/malware/tree/master/hackingteam_core_packer/core_blob) below) which we can use to confirm a suspect binary is a 'core-packer' crypted version of a known malicious binary.
