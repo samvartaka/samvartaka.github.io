@@ -660,7 +660,7 @@ What we might be able to recover (though the chance is extremely small that this
 
 * If you recovered an AES key, apply it in a brute-force manner to all encrypted files, checking whether it applies to the infovector (if the first 4 plaintext bytes are 'CTB1') or to the file in question
 
-In order to identify ephemeral keypairs we will scan through the memory dump and look for two 256-bit bytestrings located at 0x70 bytes from eachother (given that the keypair is located at this distance from eachother in the file encryption function stackframe and this distance is static) which form a valid Curve25519 keypair. Testing this on a (dummy) memory dump looks as follows:
+In order to identify ephemeral keypairs we will scan through the memory dump and look for two 256-bit bytestrings located at 0x70 bytes from eachother (given that the keypair is located at this distance from eachother in the file encryption function stackframe and this distance is static) which form a valid Curve25519 keypair. Testing this on a (dummy) memory dump looks as follows using this small (and very slow) [demo script](https://github.com/samvartaka/ctb_locker/blob/master/ctb_memhunter.py) i wrote:
 
 ```python
 python ctb_memhunter.py --dumpfile ./test.dmp --distance 112
@@ -678,11 +678,11 @@ I didn't have the time to expand this beyond a rather trivial idea, particularly
 
 ### If the master private key is obtained
 
-The most reliable recovery scenario would involve obtaining the master private key corresponding to the master public key for the particular campaign an infection belongs to, in this case that would be the private key of `D5 46 B3 24 6C 7D 19 DA F4 C9 D7 1A 05 63 C3 F4 82 BC 18 35 1C 71 C1 35 AB 4F 6F 7A 6C 46 95 75`. Recovery of such a key would involve a seizure of the CTB-locker infrastructure in order to extract it from the backend where it is held. Until the time that happens there is relatively little to do. Should any CTB-locker private keys ever be made public, however, i [have written a small script](TODO) capable of decrypting CTB-locker encrypted files when provided with the correct master private key. 
+The most reliable recovery scenario would involve obtaining the master private key corresponding to the master public key for the particular campaign an infection belongs to, in this case that would be the private key of `D5 46 B3 24 6C 7D 19 DA F4 C9 D7 1A 05 63 C3 F4 82 BC 18 35 1C 71 C1 35 AB 4F 6F 7A 6C 46 95 75`. Recovery of such a key would involve a seizure of the CTB-locker infrastructure in order to extract it from the backend where it is held. Until the time that happens there is relatively little to do. Should any CTB-locker private keys ever be made public, however, i [have written a small script](https://github.com/samvartaka/ctb_locker/blob/master/ctb_recover.py) capable of decrypting CTB-locker encrypted files when provided with the correct master private key. 
 
 Before anyone contacts me for help recovering their files, however, please note that this only works in the event that the required master private key is recovered due to, for example, law enforcement seizing the CTB-locker backend infrastructure. Without that key this script cannot work.
 
-In order to run it one will need to first run the following helper script on the infected machine:
+In order to run it one will need to first run the [following helper script](https://github.com/samvartaka/ctb_locker/blob/master/ctb_help.py) i wrote on the infected machine:
 
 ```bash
 python ctb_help.py
@@ -722,4 +722,4 @@ The overall takeaway here, however, is that the cryptographic scheme and primiti
 
 ## IOCs
 
-For completeness i have included a set of Indicators Of Compromise (IOCs) in the [OpenIOC](http://www.openioc.org/) format for the attack vector and malware involved in this campaign which can be downloaded [here](TODO).
+For completeness i have included a set of Indicators Of Compromise (IOCs) in the [OpenIOC](http://www.openioc.org/) format for the attack vector and malware involved in this campaign which can be downloaded [here](https://github.com/samvartaka/ctb_locker/blob/master/ctblocker.ioc).
