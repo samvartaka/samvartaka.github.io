@@ -611,7 +611,7 @@ Note that CTB-locker doesn't download or drop a pre-compiled TOR executable but 
 
 The infrastructure roughly looks as follows:
 
-![alt infrastructure]({{ site.url }}/images/infrastructure.jpg)
+![alt infrastructure]({{ site.url }}/images/infrastructure.png)
 
 #### Payment Server
 
