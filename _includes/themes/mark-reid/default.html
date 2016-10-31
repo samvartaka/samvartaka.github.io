@@ -32,11 +32,11 @@
   
   <div id="header">
     <h1>
-    	<a href="{{ HOME_PATH }}" title="{{ site.title }}">{{ site.title }}</a>
-    	<span class="byline">&larr; <a href="{{ HOME_PATH }}">{{ site.tagline }}</a></span>
+    	<a href="{{ HOME_PATH }}" title="{{ site.title }}">{{ site.title }}</a>    	
     </h1>
     <ul class="nav">
       <li><a class="home" href="{{ HOME_PATH }}">Home</a></li>
+      <li><a class="home" href="/about">About</a></li>
       <li><a  href="/archive.html">Archive</a></li>
       <li><a  href="/pages.html">Pages</a></li>
       <li><a  href="/categories.html">Categories</a></li>
@@ -49,7 +49,7 @@
   <div id="footer">
   	<address>
   		<span class="copyright">
-  			Content by <a href="/info/site.html">{{ site.author.name }}</a>. Design by 
+  			Content by <a href="/about">{{ site.author.name }}</a>. Design by 
   			<a href="http://mark.reid.name/">Mark Reid</a>
   			<br/>
   			(<a rel="licence" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Some rights reserved</a>)			
@@ -73,5 +73,20 @@
 <![endif]-->
 
   {% include JB/analytics %}
+<script type="text/javascript">
+var sc_project=10630954; 
+var sc_invisible=1; 
+var sc_security="7f3079de"; 
+var scJsHost = (("https:" == document.location.protocol) ?
+"https://secure." : "http://www.");
+document.write("<sc"+"ript type='text/javascript' src='" +
+scJsHost+
+"statcounter.com/counter/counter.js'></"+"script>");
+</script>
+<noscript><div class="statcounter"><a title="web analytics"
+href="http://statcounter.com/web-analytics/"
+target="_blank"><img class="statcounter"
+src="//c.statcounter.com/10630954/0/7f3079de/1/" alt="web
+analytics"></a></div></noscript>
 </body>
 </html>
