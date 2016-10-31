@@ -371,11 +371,11 @@ The elliptic curve used by CTB-locker is djb's [Curve25519](https://en.wikipedia
 
 As covered by [Zairon](https://zairon.wordpress.com/2015/02/17/ctb-locker-encryptiondecryption-scheme-in-details/) in his reverse engineering of CTB-locker's cryptographic scheme, key generation consists of a `GenSecretAndPublicKeys` procedure which generates a random secret key and computes the corresponding public key:
 
-![alt genkeys]({{ site.url }}/images/genkeys.png)
+<img src="http://samvartaka.github.io/images/genkeys.png" width="657" height="132">
 
 and a `key_generation_procedure` which generates two ephemeral Curve25519 keypairs, a shared secret (between the secret key of the second ephemeral keypair and the master public key embedded in the malware), a 256-bit AES key (consisting of the SHA256 hash digest of the shared secret) and a `secret_info` buffer encrypted using AES-256:
 
-![alt keygen]({{ site.url }}/images/keygen.png)
+<img src="http://samvartaka.github.io/images/keygen.png" width="657" height="234">
 
 The pseudo-code corresponding to this key generation scheme (including generation of asymmetric keypairs) is as follows:
 
@@ -424,7 +424,7 @@ The `secret_info` segment holds `secret_key_1` and an 8-byte `machine guid` vari
 
 Judging from the disassembly, the Curve25519 implementation seems to be taken directly from [Adam Langley's implementation of the curve25519_donna function based on djb's original implementation](https://github.com/agl/curve25519-donna/blob/master/curve25519-donna.c) and as such seems solid. The encrypted `secret_info` is stored in a hidden file (called `hiddeninfo` in Zairon's analysis) of 654 bytes in `<CommonappDataFolder>\microsoft` whose name is derived from the first DWORD of the `corehash`. The `hiddeninfo` file is organized roughly as follows and includes the 5 'demo' keys allowing users to decrypt 5 files offline for free in a "show of good faith" by the ransomware:
 
-![alt hiddeninfo]({{ site.url }}/images/hiddeninfo.png)
+<img src="http://samvartaka.github.io/images/hiddeninfo.png" width="657" height="657">
 
 This info block is stored in memory (with the `secretinfo` segment encrypted as described below) and later written to the `hiddeninfo` file. Apart from the seperate encryption of the `secretinfo` segment the entire info block is also encrypted prior to storage in `hiddeninfo` using the following approach:
 
@@ -449,7 +449,7 @@ This effectively encrypts the hidden info under the `corehash` as the AES key in
 
 Given the cryptographic centrality of this `shared_secret` (from which the key encrypting the `secretinfo` block holding our target `secret_key_1` is derived) which is established during the key generation process it is worth taking a look at the RNG underlying the generation of secret keys. All 256-bit secret keys are derived using SHA256 from 448 bits of 'random' data. This random data is composed as follows:
 
-![alt randomdata]({{ site.url }}/images/randomdata.png)
+<img src="http://samvartaka.github.io/images/randomdata.png" width="657" height="657">
 
 The components of this random data are, however, random only to varying degrees. Assuming we are faced with a system after it has been hit by a CTB-locker infection (as opposed to a running infection) we can deduce the following elements:
 
@@ -527,7 +527,7 @@ Note that while encryption is done using AES-256-ECB (a very insecure block ciph
 
 The encrypted file format is as follows:
 
-![alt encryptedfile]({{ site.url }}/images/encryptedfile.png)
+<img src="http://samvartaka.github.io/images/encryptedfile.png" width="657" height="657">
 
 ### File Decryption
 
@@ -535,7 +535,7 @@ In order to decrypt a file one needs to be in possession of `file_aes_key` which
 
 When the victim wants to decrypt their files they can do so either by navigating (using TOR) to the payment server or they can use the interactive 'lockscreen' overlaying the victim's desktop background. In case of the latter the malware will contact the `gateway server` (see the `CTB-locker infrastructure` section) to request payment details which looks as follows (image courtsey of [Kaspersky](https://securelist.com/analysis/publications/64608/a-new-generation-of-ransomware/):
 
-![alt ctblocker1]({{ site.url }}/images/ctblocker1.jpg)
+<img src="http://samvartaka.github.io/images/ctblocker1.jpg" width="657" height="532">
 
 Upon requesting decryption the malware [contacts the gateway server](https://www.circl.lu/pub/tr-33/) and sends the following data (in encrypted form as per the details in the infrastructure section) taken from the `hiddeninfo` file:
 
@@ -611,13 +611,13 @@ Note that CTB-locker doesn't download or drop a pre-compiled TOR executable but 
 
 The infrastructure roughly looks as follows:
 
-![alt infrastructure]({{ site.url }}/images/infrastructure.png)
+<img src="http://samvartaka.github.io/images/infrastructure.png" width="657" height="657">
 
 #### Payment Server
 
 The payment server looks as follows (as per [SANS ISC's post](https://isc.sans.edu/diary/DalexisCTB-Locker+malspam+campaign/19641) on the matter):
 
-![alt paymentserver]({{ site.url }}/images/paymentserver.jpg)
+<img src="http://samvartaka.github.io/images/paymentserver.jpg" width="657" height="862">
 
 The onion address of the payment server corresponding to this campaign is `jssestaew3e7ao3q.onion`.
 
