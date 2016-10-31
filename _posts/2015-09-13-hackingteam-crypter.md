@@ -103,7 +103,8 @@ Since RC4 is a streamcipher there is no need for either padding or dividing the 
 
 The first of these is a [known plaintext attack (KPA)](https://en.wikipedia.org/wiki/Known-plaintext_attack).
 
-![alt streamcipher]({{ site.url }}/images/streamcipher.png)
+
+<img src="http://samvartaka.github.io/images/streamcipher.png" width="657" height="419">
 
 As can be seen in the above image it is trivial to obtain a keystream segment of length *n* from offset *i* to offset *i+n* if i have a known (or probable) plaintext segment of length *n* at the same offset. A simple XOR between the ciphertext and known plaintext will result in the keystream segment corresponding to that offset. A well-designed streamcipher ensures that such KPAs yielding keystream derivation do not allow for recovery of the internal state of the PRGA (and hence recovery of other keystream fragments or even the seed key). But if we have a set of parallel ciphertexts we can use such a KPA to derive keystream at offset *i* in one ciphertext and apply it at the same offset to another ciphertext (since they were encrypted using the same keystream) and hence obtain another plaintext fragment.
 
