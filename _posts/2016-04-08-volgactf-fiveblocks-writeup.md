@@ -81,7 +81,7 @@ class bcs(object):
 
 We can see the mysterious `bcs` cipher creates two seperate encryption objects `bc1` and `bc2` with the two keys supplied to it. We also see that input data is padded to a multiple of the blocksize (64 bits in this case) and that it employs a [block cipher mode of operation](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation) that looks a bit like [CBC mode](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Cipher_Block_Chaining_.28CBC.29) but isn't, the prime difference being that this mode of operation XORs the intermediate ciphertext with the IV rather than the intermediate plaintext. This image illustrates the construction:
 
-![alt mode_of_operation]({{ site.url }}/images/mode_of_operation.png)
+<img src="http://samvartaka.github.io/images/mode_of_operation.png" width="657" height="383">
 
 It looks like we're faced with a block cipher constructed out of two seperate block ciphers (one used in encryption direction, the other in decryption direction) so the best way to go about this is probably to attack both block ciphers seperately, recover their corresponding round keys and use those to decrypt our flag.
 
@@ -222,7 +222,7 @@ Lets clarify some things by example here. Consider FEAL-4's round function (also
 
 In order to find a good differential characteristic we need to find one that holds with high probability for any given set of inputs to our target round function. One way to approach this is by running every combination of input pairs through the round function and noting down the occurances of a differential characteristic but this process tends to become infeasible quickly for target functions with larger input sizes. So let's break things down. Our target round function, `f-box`, is composed of several applications of `g-box`. This `g-box` is a modular addition function followed by some bitshifting which looks as follows (using King's image of the regular FEAL-4 round function and its `g-box` here):
 
-![alt feal_round]({{ site.url }}/images/feal_round.jpg)
+<img src="http://samvartaka.github.io/images/feal_round.jpg" width="657" height="281">
 
 In code:
 
