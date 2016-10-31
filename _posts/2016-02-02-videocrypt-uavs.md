@@ -9,7 +9,7 @@ tags: [crypto, videocrypt, uavs, drones, COMSEC, payTV]
 
 Several days ago The Intercept [published a story](https://theintercept.com/2016/01/28/israeli-drone-feeds-hacked-by-british-and-american-intelligence/) about how British and American intelligence (in the form of GCHQ and the NSA) tapped into live video feeds from Israeli drones and fighter jets as part of a program codenamed ['Anarchist'](https://en.wikipedia.org/wiki/Operation_Anarchist). Footage was intercepted by [RAF Troodos](https://en.wikipedia.org/wiki/RAF_Troodos) on Cyprus, a signal station run by Golf Section, [Joint Service Signal Unit (JSSU)](http://www.raf.mod.uk/rafdigby/aboutus/jssu.cfm). The article mentions how analysts first collected encrypted video signals at Troodos in 1998 and how signals were picked up from a variety of drones and fighter jets used by a variety of actors in the region, some of which were apparently sent in the clear and others which were encrypted. The supposed aim of the intercepted snapshorts seemed to be identification of which signals belonged with which aircraft, weapons system or radar and to demonstrate the capability was there.
 
-![alt troodos]({{ site.url }}/images/RAF_TroodosMap_01.png)
+<img src="http://samvartaka.github.io/images/RAF_TroodosMap_01.png" width="657">
 
 Apart from the, admittedly unsurprising, fact that many of the sensitive signals floating around are sent in the clear what was particularly interesting in the piece is its mention of the use of publicly available open-source tools used for the decryption of those signals that were encrypted. This post intends to delve a little deeper into the technical details that emerge from the story and accompanying leaked documents.
 
@@ -25,8 +25,9 @@ As the article from The Intercept mentions, however, drone feeds are vulnerable 
 
 A SOI dubbed S455e described in the leaked training document is shown in both encrypted and decrypted form and it is noted that these are virtually indistinguishable when examined in the frequency domain, apart from an increase in energy at lower frequencies corresponding to image smoothening by the 'scrambling' (aka television encryption) process. The manual states that in the scrambled signal the video frame is unchanged and there are two lines of digital information encoded in the 'teletext area' at the top of the screen holding cryptographic metadata which revealed the scrambling technique is 'line cut and rotate' (dubbed 'cut & slide' in the GCHQ document). This technique, which consists of cutting each line of the video feed at a certain location and transmitting the two halves in opposite order, was used by the [VideoCrypt](https://en.wikipedia.org/wiki/VideoCrypt) cryptographic scheme originally introduced in 1989 by News Datacom (and used by SkyTV and other broadcasters) for smartcard-based analogue PayTV solutions before the switch to digital was made.
 
-![alt clear_signal]({{ site.url }}/images/clear_signal.jpg)
-![alt encrypted_signal]({{ site.url }}/images/encrypted_signal.jpg)
+<img src="http://samvartaka.github.io/images/clear_signal.jpg" width="657">
+<img src="http://samvartaka.github.io/images/encrypted_signal.jpg" width="657">
+
 
 The manual mentions the availability of plenty of [open source material](https://en.wikipedia.org/wiki/VideoCrypt#Attacks) discussing and implementing publicly known attacks on VideoCrypt, singling out [Markus Kuhn's](https://en.wikipedia.org/wiki/Markus_Kuhn_(computer_scientist)) [AntiSky](https://www.cl.cam.ac.uk/~mgk25/tv-crypt/image-processing/antisky.html) program in particular. The approach outlined in the GCHQ training manual is as follows:
 
@@ -46,7 +47,7 @@ So let's take a look at the VideoCrypt scheme. VideoCrypt operates on analogue v
 
 In order to decode a signal the decoder would interface with the smart card to check if the card was authorised for a specific channel and if this was the case the decoder would seed the card's PRNG with a seed transmitted with the video signal (as part of the earlier mentioned cryptographic metadata in the 'teletext area') to reproduce the correct sequence of cut points in order to unscramble the image.
 
-![alt videocrypt]({{ site.url }}/images/videocrypt.png)
+<img src="http://samvartaka.github.io/images/videocrypt.png" width="657">
 
 Obviously the 'line cut and rotate' approach is rather meagre as permutations go since it only permutates the image at one point along one axis (the x-axis). A variant used by the BBC, called VideoCrypt-S, included 'line shuffle scrambling' which would permutate the image along the y-axis by shuffeling the order in which lines are transmitted (eg. line 5 may transmitted as line 10) using 6 blocks of 47 lines per field and supported three format (shuffeling either 282 lines, every alternate field or pseudo-randomly delaying the start position of the video in each line). It appears, however, that this variant was only in use by the BBC Select Service and in any case did not apply to the algorithm used to scramble the drone footage discussed in the documents released with the article.
 
@@ -133,7 +134,7 @@ A naive exhaustive search would require correlation of 256^n lines of w*n pixels
 
 We can try out antisky on a videocrypt scrambled image provided on Kuhn's website and effectively follow the 'Anarchist' manual procedure.
 
-![alt rvc1]({{ site.url }}/images/r-vc1.jpg)
+<img src="http://samvartaka.github.io/images/r-vc1.jpg" width="657" height="500">
 
 ```bash
 usr@machine:~# mogrify -format ppm r-vc1.jpg
@@ -144,7 +145,7 @@ usr@machine:~# ./antisky -1 -r20 r-vc1.ppm r-vc1.decrypted.pgm
 usr@machine:~# mogrify -format png r-vc1.decrypted.pgm
 ```
 
-![alt rvc1decrypted]({{ site.url }}/images/r-vc1.decrypted.png)
+<img src="http://samvartaka.github.io/images/r-vc1.decrypted.png" width="657" height="500">
 
 As noted in the training manual, the descrambling process is a bit of a 'trial and error' affair which involves stepping through the parameter (ignoring a certain number of columns on the screen left and/or right hand sides, border marking or not, interline cross-correlation only, etc.) until they yield a decent enough unscrambled image. Once the optimal parameters for a frame within a feed have been found i'd imagine these scale quite well to the rest of the feeds for the drone in question.
 
