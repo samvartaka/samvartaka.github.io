@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Samvartaka
+title: "When you want to know how things really work, study them when they're coming apart."
 tagline: "When you want to know how things really work, study them when they're coming apart."
 ---
 {% include JB/setup %}
