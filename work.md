@@ -54,5 +54,5 @@ group: navigation
 * [**Keyak v2 pure Python implementation**](https://github.com/samvartaka/keyak-python)
 * [**SIMON 64/128 block cipher VHDL implementation**](https://github.com/samvartaka/simon_vhdl)
 * [**CTB-Locker Ransomware Decryption Scripts**](https://github.com/samvartaka/ctb_locker)
-* [**HackingTeam 'core-packer' Detector**](https://github.com/samvartaka/malware/hackingteam_core_packer)
-* [**RSA-Curve25519 Cryptographic Backdoor Detector**](https://github.com/samvartaka/malware/crypto_backdoors/rsa_curve25519)
+* [**HackingTeam 'core-packer' Detector**](https://github.com/samvartaka/malware/tree/master/hackingteam_core_packer)
+* [**RSA-Curve25519 Cryptographic Backdoor Detector**](https://github.com/samvartaka/crypto_backdoors/tree/master/rsa_curve25519)
