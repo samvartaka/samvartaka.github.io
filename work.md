@@ -18,7 +18,9 @@ group: navigation
 
 ### Presentations
 
-* [**APTs Way: Evading your EBNIDS** - *Black Hat Europe, October 2014, Amsterdam, The Netherlands*](https://www.blackhat.com/eu-14/briefings.html#apts-way-evading-your-ebnids)
+* [**Hardware implementation of Keyak v2** - *Radboud University (RU) Digital Security group Research Internship, January 2016, Nijmegen, The Netherlands*](https://github.com/samvartaka/talks/raw/master/keyak_caesar_internship.pdf)
+* [**APTs Way: Evading your EBNIDS** - *Black Hat Europe, October 2014, Amsterdam, The Netherlands*](https://www.blackhat.com/eu-14/briefings.html#apts-way-evading-your-ebnids) [(slides)](https://github.com/samvartaka/talks/raw/master/eu-14-Abbasi-APTs-Way-Evading-Your-EBNIDS.pdf)
+* [**Security aspects of RFID-enabled Car Keys** - *Eindhoven University of Technology (TU/e) Seminar Information Security Technology, April 2014, Eindhoven, The Netherlands*](https://github.com/samvartaka/talks/raw/master/security_rfid_car_keys.pdf)
 
 ### Vulnerabilities
 
