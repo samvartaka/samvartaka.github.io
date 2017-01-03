@@ -25,13 +25,13 @@ While extensive work and standardization (eg. [NIST SP800-90A](http://nvlpubs.ni
 
 Bruce Schneier, John Kelsey and Niels Ferguson designed [Yarrow](https://en.wikipedia.org/wiki/Yarrow_algorithm) (illustrated in the image below) to address these issues and Yarrow was subsequently adopted by various operating systems (such as OS X, iOS, AIX, FreeBSD and QNX) as the underlying design of their OS CSPRNGs. In order to solve some issues with Yarrow (particularly with regards to entropy estimation), Schneier and Ferguson designed [Fortuna](https://en.wikipedia.org/wiki/Fortuna_(PRNG)) as the successor to Yarrow.
 
-![alt yarrow]({{ site.url }}/images/yarrow.png)
+<img src="http://samvartaka.github.io/images/yarrow.png" width="357">
 
 ## Embedded Systems & Entropy Issues
 
 Requiring a source of 'quality' entropy before being able to generate secure random numbers is kind of a chicken-and-egg problem. So where do we get our seed entropy from? Ideally we get this from some sort of hardware RNG based on physical phenomena (either quantum-random ones such as [radioactive decay](https://en.wikipedia.org/wiki/Radioactive_decay) or [shot noise](https://en.wikipedia.org/wiki/Shot_noise) or non-QR ones such as [thermal noise](https://en.wikipedia.org/wiki/Johnson%E2%80%93Nyquist_noise), [atmospheric noise](https://en.wikipedia.org/wiki/Atmospheric_noise) or [sensor values](https://en.wikipedia.org/wiki/Sensor_node)) but in practice these are often not present so OS CSPRNGs in the world of general-purpose computing tend to rely on 'unpredictable' (often associated with user interaction) system events such as mouse movements and keystroke-, disk access- and interrupt request timings instead.
 
-![alt entropy_sources]({{ site.url }}/images/entropy_sources.png)
+<img src="http://samvartaka.github.io/images/entropy_sources.png" width="357">
 
 But in the embedded world such entropy sources are often not available. Often there's little or no user interaction, little or very predictable machine-to-machine interaction and no common input peripherals or disks. Quite simply put: embedded systems are *'boring'*.
 
@@ -39,13 +39,13 @@ Moreover when designing an OS CSPRNG one has to take into account OS design mode
 
 And even when implementing a particular (rather than designing a generic) OS CSPRNG design, OS developers are faced with another polyculture in terms of hardware and systems. It's hard to make generalizations about peripherals that might be present. Some systems might have some form of user input (eg. a keypad or touchscreen), some might have an accelerometer, a radio chip, a microphone or sensor input (eg. light, temperature, humidity) but when you have to implement entropy gathering routines for your OS CSPRNG you cannot make such assumptions about the target system (unless you aim at a very, very specific market) and besides, how one interacts with these entropy sources varies from system to system. This often results in a situation where entropy gathering is either left to developers somewhere down the road (eg. vendors putting together a specific embedded system using the OS in question) in the form of 'implement me' routines or callback functionality or OS developers rely on any source (however dodgy) known to be always be available, which usually means drawing from system activity (such as system time, IRQs, PIDs, etc.).
 
-![alt entropy_sources2]({{ site.url }}/images/entropy_sources2.png)
+<img src="http://samvartaka.github.io/images/entropy_sources2.png" width="357">
 
 Finally, some microprocessor architectures or microcontroller and SoC designs might provide TRNG functionality and when this is present it's preferable to draw upon this (as many OS CSPRNGs support doing) but one cannot rely on such TRNG functionality as the only seed entropy source alone. For one, such functionality isn't present in most chips and thus such reliance would adversely affect OS deployability. Secondly TRNGs are usually very slow, generating a limited number of random bits per second which results in slow entropy collection and in turn results in slow OS CSPRNG (re)seeding.
 
 This last issue also means that most embedded OSes that do implement a CSPRNG only implement a non-blocking interface (eg. the `/dev/urandom` interface on Unix-like systems) in order to prevent insufficient entropy from holding up cryptographic operations and thus adversely affecting system reaction speed. This is particularly problematic in light of the so-called [`'boot-time entropy hole'`](https://factorable.net/weakkeys12.extended.pdf) in embedded systems. The boot-time entropy hole is a window of vulnerability during which OS CSPRNG output might be entirely predictable due to it being generated under low entropy conditions (ie. drawn from a non-blocking interface when the CSPRNG is not seeded with sufficient entropy). This window is most likely to occur during boot since here entropy conditions tend to be worst due to little system activity, unavailability of entropy sources and the predictability of boot sequences.
 
-![alt seedfile]({{ site.url }}/images/seedfile.png)
+<img src="http://samvartaka.github.io/images/seedfile.png" width="357">
 
 Some operating systems (such as certain general-purpose oriented Linux distros) attempt to tackle this problem by maintaining a so-called 'seed file' from which the CSPRNG is (partially) seeded during boot and which gets filled with new random data from CSPRNG output during system shutdown. The problem with porting this approach to the embedded world, however, is that it's unsuitable for systems without (sufficient) persistent storage and it doesn't address this issue of the boot-time entropy hole during the first system boot (which is when many embedded systems generate their long-term cryptographic keys).
 
@@ -57,7 +57,7 @@ This is often a highway to the danger zone as various security issues involving 
 
 As [Mathy Vanhoef observed in his 33C3 presentation](https://fahrplan.events.ccc.de/congress/2016/Fahrplan/events/8195.html), the [802.11 standard has an example RNG in Annex M.5](http://csrc.nist.gov/archive/wireless/S10_802.11i%20Overview-jw1.pdf) specified rather ambiguously:
 
-![alt random_enough]({{ site.url }}/images/random_enough.png)
+<img src="http://samvartaka.github.io/images/random_enough.png" width="557">
 
 The problem of deciding what's "random enough" (especially for security purposes) isn't a trivial one though. In order to evaluate this nebulous quality we can look at 'randomness' in two places: source entropy and PRNG output. If either isn't "random enough" PRNG output might be predictable.
 
@@ -100,7 +100,7 @@ The [NIST Entropy Source Testing (EST) tool](https://github.com/usnistgov/SP800-
 
 In order to get a better picture of the state of OS CSPRNG presence and quality in embedded operating systems we studied 35 operating systems and found that the majority (60%) of them did not provide any OS CSPRNG functionality (particularly the smaller [real-time operating systems (RTOSes)](https://en.wikipedia.org/wiki/Real-time_operating_system) aimed at the most constrained end of the embedded spectrum). [VxWorks](https://en.wikipedia.org/wiki/VxWorks) is one such example of a widely used, commercial (real-time) operating system without an OS CSPRNG. Since many security libraries (eg. [OpenSSL](https://en.wikipedia.org/wiki/OpenSSL), [WolfSSL](https://en.wikipedia.org/wiki/WolfSSL), [CryptLib](http://www.cryptlib.com/)) are built on top of OS CSPRNG assumptions they leave entropy collection up to developers in operating systems which do not provide this functionality. This leads to some worrying attempts at 'workarounds' seen on VxWorks developer mailing lists:
 
-![alt vxworks_workarounds]({{ site.url }}/images/vxworks_workarounds.png)
+<img src="http://samvartaka.github.io/images/vxworks_workarounds.png" width="557">
 
 And those embedded operating systems that *do* (at least attempt to) provide an OS CSPRNG tend to make design and implementation mistakes. Since the embedded OSes in our selection that provide an OS CSPRNG are mostly Linux-, BSD- or Windows-based (and often do not have real-time capabilities) we decided to take a closer look at several commercial, closed-source, real-time embedded operating systems that do not derive from these OSes common in the general-purpose world.
 
@@ -112,11 +112,11 @@ QNX provides an OS CSPRNG via the Unix-like /dev/random device (with both /dev/u
 
 The QNX PRNG is based on [Yarrow](https://en.wikipedia.org/wiki/Yarrow_algorithm) but on the older [Yarrow 0.8.71 implementation](https://www.schneier.com/code/Yarrow0.8.71.zip) (having a single entropy pool and not applying a blockcipher to PRNG output) rather than the Yarrow-160 implementation specified [in the paper](https://www.schneier.com/academic/paperfiles/paper-yarrow.pdf). In addition, QNX Yarrow also diverges from this older implementation in terms of reseed control deviations.
 
-![alt qnx_yarrow]({{ site.url }}/images/qnx_yarrow.png)
+<img src="http://samvartaka.github.io/images/qnx_yarrow.png" width="357">
 
 QNX's /dev/urandom output passes both DieHarder and NIST STS but as it is tailored to embedded systems, its entropy sources are rather lacking. In particular, the undocumented boot-time entropy sources (reconstructed in the image below after reverse engineering) are of less than stellar quality: NIST EST evaluation gives us a min-entropy of 0.0276 which means that QNX boot-time source entropy/noise contains less than 1 bit of actual min-entropy per 8 bits of raw data. Similar shaky results were obtained with regards to restart entropy.
 
-![alt boot_entropy]({{ site.url }}/images/boot_entropy.png)
+<img src="http://samvartaka.github.io/images/boot_entropy.png" width="357">
 
 We did not evaluate QNX runtime entropy with NIST EST but static and predictable information elements in process runtime information (uids, flags, priority, etc.) and the way IRQ timings are handled (developers have to manually specify which interrupts to draw from and are advised to choose infrequently triggered interrupts to reduce overhead) are troublesome. This isn't very relevant for all but the latest of QNX releases (6.6) since in all prior versions reseed control is implemented (ie. functionality is present in system binaries) but never actually *invoked* which means reseeding never takes place and runtime entropy is idly accumulated in the entropy pool while the only entropy present in the PRNG comes from boottime entropy. Needless to say, this is a dangerous situation. In QNX 6.6 some form of custom reseed control is implemented (in the `yarrow_do_sha1` and `yarrow_make_new_state` functions to be precisely):
 
@@ -148,7 +148,7 @@ Another embedded operating system we studied we can't name because of an [NDA](h
 
 The OS provides a PRNG via a /dev/urandom interface with two main underlying functions `urandom_read` (filling a buffer with random bytes) and `urandom_write` ((re)seeding the PRNG using only the 1st 4 bytes from a supplied buffer). After reverse engineering the PRNG i found out it was based on the [glibc BSD random(3) PRNG](https://www.freebsd.org/cgi/man.cgi?query=random&apropos=0&sektion=3&manpath=FreeBSD+8.1-RELEASE&format=html) with custom constants, which is *not* a secure random number generator. To make matters worse, the PRNG was vulnerable to a `local reseed attack` since the /dev/urandom interface was world-writable by default allowing any attacker with limited privileges to control the PRNG internal state (and hence output) on a system-wide level (allowing for eg. influencing cryptographic keys generated for users with higher privileges). But the worst mistake was probably the fact that the PRNG's initialization function simply consumes a static 32-bit seed which is identical for every OS deployment. In the further absence of reseed control this means PRNG output is completely predictable to a remote attacker with the only source of uncertainty being the number of bytes consumed from the PRNG (thus advancing the state offset) before drawing for it to generate a particular cryptographic secret. Since this uncertainty is very reasonably bounded (it's quite unlikely more than 4GB have been read from /dev/urandom before generating a particular target secret, thus bounding the search space by `2**32`) an attacker targeting eg. a public key generated on this OS can simply clone the PRNG from the known seed and mount an exhaustive search for the correct state offset until a matching public/private keypair has been found allowing for trivial private key recovery attacks (among other attacks exploiting this PRNG's weakness) as shown in the image below. This attack is quite a bit more powerful than even an attack targeting the fact that PRNG algorithm itself is insecure.
 
-![alt redacted_recovery_attack]({{ site.url }}/images/redacted_recovery_attack.png)
+<img src="http://samvartaka.github.io/images/redacted_recovery_attack.png" width="357">
 
 ## Takeaways and Open Problems
 
