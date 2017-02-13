@@ -18,6 +18,7 @@ group: navigation
 
 ### Presentations
 
+* [**Ghost in the Machine: Challenges in Embedded Binary Security** - *USENIX Enigma, January 2017, Oakland, USA*](https://www.usenix.org/conference/enigma2017/conference-program/presentation/wetzels)
 * [**Wheel of Fortune: Analyzing Embedded OS Random Number Generators** - *33C3, December 2016, Hamburg, Germany*](https://media.ccc.de/v/33c3-7949-wheel_of_fortune)
 * [**Hardware implementation of Keyak v2** - *Radboud University (RU) Digital Security group Research Internship, January 2016, Nijmegen, The Netherlands*](https://github.com/samvartaka/talks/raw/master/keyak_caesar_internship.pdf)
 * [**APTs Way: Evading your EBNIDS** - *Black Hat Europe, October 2014, Amsterdam, The Netherlands*](https://www.blackhat.com/eu-14/briefings.html#apts-way-evading-your-ebnids) [(slides)](https://github.com/samvartaka/talks/raw/master/eu-14-Abbasi-APTs-Way-Evading-Your-EBNIDS.pdf)
