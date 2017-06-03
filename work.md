@@ -8,6 +8,7 @@ group: navigation
 
 ### Publications
 
+* [**Internet of Pwnable Things: Challenges in Embedded Binary Security** - *J. Wetzels (USENIX ;login: Vol. 42, No. 2)*](https://www.usenix.org/publications/login/summer2017/wetzels)
 * [**Open Sesame: The Password Hashing Competition and Argon2** - *J. Wetzels (CoRR abs/1602.03097)*](https://arxiv.org/abs/1602.03097)
 * [**Sponges and Engines: An introduction to Keccak and Keyak** - *J. Wetzels, W. Bokslag (CoRR abs/1510.02856)*](https://arxiv.org/abs/1510.02856)
 * [**Simple SIMON: FPGA implementations of the SIMON 64/128 Block Cipher** - *J. Wetzels, W. Bokslag (CoRR abs/1507.06368)*](https://arxiv.org/abs/1507.06368)
