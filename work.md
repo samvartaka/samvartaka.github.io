@@ -8,6 +8,7 @@ group: navigation
 
 ### Publications
 
+* [**μShield: Configurable Code-Reuse Attacks Mitigation For Embedded Systems** - *A. Abbasi, J. Wetzels, W. Bokslag, E. Zambon, S. Etalle (2nd International Workshop on Security of the Internet of Everything, 2017, Helsinki, Finland)*](https://research.comnet.aalto.fi/NSS2017/program.html)
 * [**Internet of Pwnable Things: Challenges in Embedded Binary Security** - *J. Wetzels (USENIX ;login: Vol. 42, No. 2)*](https://www.usenix.org/publications/login/summer2017/wetzels)
 * [**Open Sesame: The Password Hashing Competition and Argon2** - *J. Wetzels (CoRR abs/1602.03097)*](https://arxiv.org/abs/1602.03097)
 * [**Sponges and Engines: An introduction to Keccak and Keyak** - *J. Wetzels, W. Bokslag (CoRR abs/1510.02856)*](https://arxiv.org/abs/1510.02856)
