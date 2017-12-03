@@ -20,6 +20,8 @@ group: navigation
 
 ### Presentations
 
+* [**The Industrial Internet of Sitting Ducks** - *Swiss Cyber Storm, October 2017, Lucerne, Switzerland*](https://www.swisscyberstorm.com/2017/06/07/Introducing_Jos_Wetzels.html) [(slides)](https://github.com/samvartaka/talks/raw/master/scs_2017_industrial_internet_sitting_ducks.pdf)
+* [**The RTOS Exploit Mitigation Blues** - *Hardwear.io, September 2017, Den Haag, The Netherlands*](https://hardwear.io/document/rtos-exploit-mitigation-blues-hardwear-io.pdf) [(slides)](https://github.com/samvartaka/talks/raw/master/hardwear-io-2017-rtos-exploit-mitigation-blues.pdf)
 * [**Ghost in the Machine: Challenges in Embedded Binary Security** - *USENIX Enigma, January 2017, Oakland, USA*](https://www.usenix.org/conference/enigma2017/conference-program/presentation/wetzels) [(slides)](https://github.com/samvartaka/talks/raw/master/enigma_slides_wetzels.pdf)
 * [**Wheel of Fortune: Analyzing Embedded OS Random Number Generators** - *33C3, December 2016, Hamburg, Germany*](https://media.ccc.de/v/33c3-7949-wheel_of_fortune) [(slides)](https://github.com/samvartaka/talks/raw/master/33c3_wheel_of_fortune_ccc_presentation_v3.pdf)
 * [**Hardware implementation of Keyak v2** - *Radboud University (RU) Digital Security group Research Internship, January 2016, Nijmegen, The Netherlands*](https://github.com/samvartaka/talks/raw/master/keyak_caesar_internship.pdf)
@@ -28,6 +30,11 @@ group: navigation
 
 ### Vulnerabilities
 
+* [**CVE-2017-3891 (QNX)**](http://support.blackberry.com/kb/articleDetail?articleNumber=000046674)
+* [**CVE-2017-3892 (QNX)**](http://support.blackberry.com/kb/articleDetail?articleNumber=000046674)
+* [**CVE-2017-3893 (QNX)**](http://support.blackberry.com/kb/articleDetail?articleNumber=000046674)
+* [**CVE-2017-9369 (QNX)**](http://support.blackberry.com/kb/articleDetail?articleNumber=000046674)
+* [**CVE-2017-9371 (QNX)**](http://support.blackberry.com/kb/articleDetail?articleNumber=000046674)
 * [**CVE-2015-5692 (Symantec Web Gateway)**](http://cve.mitre.org/cgi-bin/cvename.cgi?name=2015-5692)
 * [**CVE-2015-5691 (Symantec Web Gateway)**](http://cve.mitre.org/cgi-bin/cvename.cgi?name=2015-5691)
 * [**CVE-2015-5690 (Symantec Web Gateway)**](http://cve.mitre.org/cgi-bin/cvename.cgi?name=2015-5690)
