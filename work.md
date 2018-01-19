@@ -20,6 +20,7 @@ group: navigation
 
 ### Presentations
 
+* [**Taking a scalpel to QNX: Analyzing & Breaking Exploit Mitigations and Secure Random Number Generators on QNX 6.6 and 7.0** - *34C3, December 2017, Leipzig, Germany*](https://media.ccc.de/v/34c3-8730-taking_a_scalpel_to_qnx)
 * [**The Industrial Internet of Sitting Ducks** - *Swiss Cyber Storm, October 2017, Lucerne, Switzerland*](https://www.swisscyberstorm.com/2017/06/07/Introducing_Jos_Wetzels.html) [(slides)](https://github.com/samvartaka/talks/raw/master/scs_2017_industrial_internet_sitting_ducks.pdf)
 * [**The RTOS Exploit Mitigation Blues** - *Hardwear.io, September 2017, Den Haag, The Netherlands*](https://hardwear.io/document/rtos-exploit-mitigation-blues-hardwear-io.pdf) [(slides)](https://github.com/samvartaka/talks/raw/master/hardwear-io-2017-rtos-exploit-mitigation-blues.pdf)
 * [**Ghost in the Machine: Challenges in Embedded Binary Security** - *USENIX Enigma, January 2017, Oakland, USA*](https://www.usenix.org/conference/enigma2017/conference-program/presentation/wetzels) [(slides)](https://github.com/samvartaka/talks/raw/master/enigma_slides_wetzels.pdf)
