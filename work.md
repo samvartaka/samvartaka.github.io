@@ -8,6 +8,7 @@ group: navigation
 
 ### Publications
 
+* [**Dissecting QNX (whitepaper)** - *J. Wetzels, A. Abbasi (Black Hat Asia, March 2018, Singapore)*](https://www.blackhat.com/docs/asia-18/asia-18-Wetzels_Abassi_dissecting_qnx__WP.pdf)
 * [**μShield: Configurable Code-Reuse Attacks Mitigation For Embedded Systems** - *A. Abbasi, J. Wetzels, W. Bokslag, E. Zambon, S. Etalle (2nd International Workshop on Security of the Internet of Everything, 2017, Helsinki, Finland)*](https://research.comnet.aalto.fi/NSS2017/program.html)
 * [**Internet of Pwnable Things: Challenges in Embedded Binary Security** - *J. Wetzels (USENIX ;login: Vol. 42, No. 2)*](https://www.usenix.org/publications/login/summer2017/wetzels)
 * [**Open Sesame: The Password Hashing Competition and Argon2** - *J. Wetzels (CoRR abs/1602.03097)*](https://arxiv.org/abs/1602.03097)
@@ -20,6 +21,10 @@ group: navigation
 
 ### Presentations
 
+* [**Dissecting QNX - Analyzing & Breaking QNX Exploit Mitigations and Secure Random Number Generators** - *Infiltrate, April 2018, Miami, USA*]()
+* [**Analyzing & Breaking Exploit Mitigations and PRNGs on QNX For Automotive, Industrial, Medical and Other Embedded Systems** - *BlackHat Asia, March 2018, Singapore*](https://www.blackhat.com/docs/asia-18/asia-18-Wetzels_Abassi_dissecting_qnx__PPT.pdf)
+* [**Dissecting QNX - Analyzing & Breaking QNX Exploit Mitigations and Secure Random Number Generators** - *OffensiveCon, February 2018, Berlin, Germany*](https://www.youtube.com/watch?v=oStklD6wP-4)
+* [**Dissecting QNX** - *REcon, February 2018, Brussels, Belgium*](https://recon.cx/2018/brussels/resources/slides/RECON-BRX-2018-Dissecting-QNX.pdf)
 * [**Taking a scalpel to QNX: Analyzing & Breaking Exploit Mitigations and Secure Random Number Generators on QNX 6.6 and 7.0** - *34C3, December 2017, Leipzig, Germany*](https://media.ccc.de/v/34c3-8730-taking_a_scalpel_to_qnx)
 * [**The Industrial Internet of Sitting Ducks** - *Swiss Cyber Storm, October 2017, Lucerne, Switzerland*](https://www.swisscyberstorm.com/2017/06/07/Introducing_Jos_Wetzels.html) [(slides)](https://github.com/samvartaka/talks/raw/master/scs_2017_industrial_internet_sitting_ducks.pdf)
 * [**The RTOS Exploit Mitigation Blues** - *Hardwear.io, September 2017, Den Haag, The Netherlands*](https://hardwear.io/document/rtos-exploit-mitigation-blues-hardwear-io.pdf) [(slides)](https://github.com/samvartaka/talks/raw/master/hardwear-io-2017-rtos-exploit-mitigation-blues.pdf)
